@@ -1,4 +1,5 @@
 from statistics import mode
+from collections import Counter
 
 
 class TrackOrders:
@@ -36,4 +37,6 @@ class TrackOrders:
         return mode([order[2] for order in self.__orders])
 
     def get_least_busy_day(self):
-        pass
+        return list(enumerate(Counter(
+            [order[2] for order in self.__orders]
+        )))[-1][1]
