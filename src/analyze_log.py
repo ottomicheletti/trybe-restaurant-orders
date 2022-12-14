@@ -2,6 +2,7 @@ import os
 import csv
 from statistics import mode
 
+
 def analyze_log(path_to_file):
     filename, ext = os.path.splitext(path_to_file)
 
@@ -22,9 +23,9 @@ def analyze_log(path_to_file):
             ])
 
             maria_most_ordered = mode([
-            order[1]
-            for order in orders
-            if order[0] == 'maria'
+                order[1]
+                for order in orders
+                if order[0] == 'maria'
             ])
 
             hamburgers_eaten_by_arnaldo = len([
@@ -45,7 +46,13 @@ def analyze_log(path_to_file):
                 if order[0] == 'arnaldo'
             ]))
 
-            lines = [maria_most_ordered, hamburgers_eaten_by_arnaldo, dishes_joao_never_ordered, days_arnaldo_never_attended]
+            lines = [
+                maria_most_ordered,
+                hamburgers_eaten_by_arnaldo,
+                dishes_joao_never_ordered,
+                days_arnaldo_never_attended
+            ]
+
             with open('data/mkt_campaign.txt', "w") as txt:
                 for line in lines:
                     txt.write(f'{line}\n')
