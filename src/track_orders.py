@@ -1,5 +1,6 @@
 from statistics import mode
 
+
 class TrackOrders:
     def __init__(self):
         self.__orders = list()
@@ -13,14 +14,16 @@ class TrackOrders:
         return self.__len__()
 
     def get_most_ordered_dish_per_customer(self, customer):
-        return mode([
-            order[1]
-            for order in self.__orders
-            if order[0] == customer
-        ])
+        return mode(
+            [order[1] for order in self.__orders if order[0] == customer]
+        )
 
     def get_never_ordered_per_customer(self, customer):
-        pass
+        return set(
+            [order[1] for order in self.__orders]
+        ).difference(set(
+            [order[1] for order in self.__orders if order[0] == customer]
+        ))
 
     def get_days_never_visited_per_customer(self, customer):
         pass
